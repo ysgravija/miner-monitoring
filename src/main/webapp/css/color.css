@@ -1,0 +1,12 @@
+.high_temp {
+    background-color:#FF0000;
+    color: white;
+}
+.medium_temp {
+    background-color:#FFFF00;
+    color: black;
+}
+.low_temp {
+    background-color:#00FF00;
+    color: black;
+}
