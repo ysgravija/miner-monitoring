@@ -101,34 +101,4 @@ public class Main
         }
         return hostList;
     }
-
-    private static void printJSON(JSONObject jsonObject) {
-        if (jsonObject != null) {
-            logger.info(jsonObject.toString(2));
-        }
-    }
-
-    private static void processTask(List<AntMiner> antMiners) {
-        Runnable task = () -> {
-            for (AntMiner antminer : antMiners) {
-                logger.info("Host: " + antminer.getHostIp());
-                try {
-                    AntMinerUtils.getDashboardDisplay(antminer);
-                } catch (Exception e) {
-                    logger.error("Exception occurred while opening socket", e);
-                }
-            }
-        };
-
-        executorService.scheduleAtFixedRate(task, 0, 5, TimeUnit.SECONDS);
-    }
-
-    private static void checkA3Data() throws IOException {
-//        AntMiner api = new AntMiner(new MinerConnection("192.168.1.99", false));
-//        printJSON(api.getSummary());
-//        printJSON(api.getStats());
-//        printJSON(api.getVersion());
-//        printJSON(api.getPools());
-//        printJSON(api.getDevs());
-    }
 }
