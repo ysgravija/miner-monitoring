@@ -47,9 +47,9 @@
                                     <td>${miner.model}</td>
                                     <td>${miner.hashRate}</td>
                                     <td>${miner.idealHashRate}</td>
-                                    <td align="center" class="${miner.chipTemperature.temp1 < 70 ? 'low_temp' : miner.chipTemperature.temp1 < 80 ? 'medium_temp' : 'high_temp'}">${miner.chipTemperature.temp1} </td>
-                                    <td align="center" class="${miner.chipTemperature.temp2 < 70 ? 'low_temp' : miner.chipTemperature.temp2 < 80 ? 'medium_temp' : 'high_temp'}">${miner.chipTemperature.temp2} </td>
-                                    <td align="center" class="${miner.chipTemperature.temp3 < 70 ? 'low_temp' : miner.chipTemperature.temp3 < 80 ? 'medium_temp' : 'high_temp'}">${miner.chipTemperature.temp3} </td>
+                                    <td align="center" class="${miner.chipTemperature.temp1 < 75 ? 'low_temp' : miner.chipTemperature.temp1 < 85 ? 'medium_temp' : 'high_temp'}">${miner.chipTemperature.temp1} </td>
+                                    <td align="center" class="${miner.chipTemperature.temp2 < 75 ? 'low_temp' : miner.chipTemperature.temp2 < 85 ? 'medium_temp' : 'high_temp'}">${miner.chipTemperature.temp2} </td>
+                                    <td align="center" class="${miner.chipTemperature.temp3 < 75 ? 'low_temp' : miner.chipTemperature.temp3 < 85 ? 'medium_temp' : 'high_temp'}">${miner.chipTemperature.temp3} </td>
                                     <td>A: ${miner.miningAccepted} &nbsp; R: ${miner.miningRejected} &nbsp; E: ${miner.hardwareErrors}</td>
                                     <td><a href="#" id="remove"
                                            onclick="document.getElementById('action').value = 'remove';document.getElementById('idMiner').value = '${miner.id}';
