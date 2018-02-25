@@ -12,6 +12,8 @@ import java.nio.file.Paths;
  */
 public class TestConnection implements Connection {
 
+    public String FILE_PREFIX = "/sample_";
+
     @Override
     public String getHost() {
         return "10.10.1.11";
@@ -20,7 +22,7 @@ public class TestConnection implements Connection {
     @Override
     public String sendAndReceive(String payload) throws IOException {
         try {
-            String filename = "/sample_" + payload.substring(12, payload.lastIndexOf('"')) + ".txt";
+            String filename = FILE_PREFIX + payload.substring(12, payload.lastIndexOf('"')) + ".txt";
             String contents = new String(Files.readAllBytes(Paths.get(getClass().getResource(filename).toURI())));
             return contents;
         } catch (Exception e) {

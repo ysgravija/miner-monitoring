@@ -2,6 +2,8 @@ package com.twoolab.app.miners;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -20,6 +22,15 @@ public class AntMinerTest {
         assertNotNull(api.getVersion());
         assertNotNull(api.getPools());
         assertNotNull(api.getDevs());
+    }
+
+    @Test(expected = IOException.class)
+    public void testAntMinerAPIExceptionHandling() throws Exception {
+        TestConnection conn = new TestConnection();
+        conn.FILE_PREFIX = "make_the_filename_wrong";
+
+        AntMiner api = new AntMiner(conn);
+        api.getSummary();
     }
 
     @Test

@@ -1,0 +1,65 @@
+
+C:\Users\user\Desktop\ant-monitor>java -jar antcommander-1.0-SNAPSHOT-jar-with-d
+ependencies.jar stats 192.168.1.96
+{
+  "STATUS": [{
+    "Msg": "CGMiner stats",
+    "STATUS": "S",
+    "When": 1519572058,
+    "Description": "cgminer 4.9.0",
+    "Code": 70
+  }],
+  "STATS": [
+    {
+      "Miner": "1.3.0.8",
+      "Type": "Antminer A3",
+      "CGMiner": "4.9.0",
+      "CompileTime": "Fri Dec 29 17:12:57 CST 2017"
+    },
+    {
+      "Max": 0,
+      "STATS": 0,
+      "GHS av": 831.13,
+      "miner_count": 3,
+      "temp2": 67,
+      "temp_max": 69,
+      "temp3": 69,
+      "frequency": "600",
+      "temp1": 67,
+      "fan2": 5550,
+      "chain_acs4": "",
+      "chain_hw2": 23387,
+      "fan1": 5520,
+      "chain_acs3": " oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooo",
+      "chain_hw1": 35365,
+      "chain_hw4": 0,
+      "chain_hw3": 72415,
+      "chain_rate4": "",
+      "chain_rate2": "277.60",
+      "ID": "A30",
+      "chain_rate3": "284.99",
+      "chain_rate1": "281.81",
+      "no_matching_work": 131167,
+      "fan_num": 2,
+      "Calls": 0,
+      "GHS 5s": "844.41",
+      "Device Hardware%": 0.1228,
+      "temp_num": 3,
+      "chain_acs2": " oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooo",
+      "chain_acs1": " oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooooooo oooo",
+      "temp2_1": 81,
+      "temp2_2": 84,
+      "temp4": 0,
+      "temp2_3": 83,
+      "chain_acn1": 60,
+      "Min": 9.9999999E7,
+      "temp2_4": 0,
+      "chain_acn3": 60,
+      "chain_acn2": 60,
+      "chain_acn4": 0,
+      "Elapsed": 557338,
+      "Wait": 0
+    }
+  ],
+  "id": 1
+}

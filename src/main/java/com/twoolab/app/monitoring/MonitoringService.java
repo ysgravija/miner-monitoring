@@ -54,7 +54,7 @@ public class MonitoringService {
         return minerList;
     }
 
-    public static List<AntMinerInfo> getMinersInfo(List<AntMiner> miners) throws IOException {
+    public static List<AntMinerInfo> getMinersInfo(List<AntMiner> miners) {
         List<AntMinerInfo> list = new ArrayList<>();
         for (AntMiner m : miners) {
             list.add(AntMinerUtils.getMinerInfo(m));
