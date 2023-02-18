@@ -1,22 +1,18 @@
 package com.twoolab.app.miners;
 
 import com.twoolab.app.Connection;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Optional;
 
 /**
  * @author yeesheng on 22/02/2018
  * @project antmonitorapp
  */
+@Slf4j
 public class AntMinerUtils {
-
-    private static final Logger logger = Logger.getLogger(AntMinerUtils.class);
     private static final int WORKER_MAX_LENGTH = 15;
 
     private static final String N_A = "-";
@@ -79,7 +75,7 @@ public class AntMinerUtils {
             return new AntMinerInfo(antMiner.getHostIp(), model, hashRate, idealHashRate,
                     pcbTemp, chipTemp, accepted, rejected, errors, workerName);
         } catch (IOException e) {
-            logger.error(e, e);
+            log.error(e.getMessage(), e);
         }
         return new AntMinerInfo(antMiner.getHostIp(), N_A, N_A, N_A, TEMP_N_A, TEMP_N_A, N_A, N_A, N_A, N_A);
     }
@@ -90,7 +86,7 @@ public class AntMinerUtils {
     }
 
     public static String buildCommand(String command) {
-        logger.debug("Requested command: " + command);
+        log.debug("Requested command: " + command);
         return "{\"" + CMD + "\":\"" + command +"\"}";
     }
 

@@ -5,7 +5,7 @@ import com.twoolab.app.miners.AntMinerInfo;
 import com.twoolab.app.miners.AntMinerUtils;
 import com.twoolab.app.miners.DummyConnection;
 import com.twoolab.app.miners.MinerConnection;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import java.util.regex.Pattern;
  * @author yeesheng on 23/02/2018
  * @project antmonitorapp
  */
+@Slf4j
 public class MonitoringService {
-
-    private static final Logger logger = Logger.getLogger(MonitoringService.class);
+    
     private static final String IP_ADDRESS_REGEX =
                     "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
                     "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
@@ -41,13 +41,13 @@ public class MonitoringService {
             String ipPrefix = rangeStart.substring(0, rangeStart.lastIndexOf(".")+1);
             for (int i = 0; i <= count; i++) {
                 String ip = ipPrefix + (start + i);
-                logger.debug("Trying to open " + ip);
+                log.debug("Trying to open " + ip);
                 try {
                     AntMinerUtils.getDebugVersion(ip);
                     minerList.add(new AntMiner(new MinerConnection(ip)));
-                    logger.info("Found AntMiner at " + ip);
+                    log.info("Found AntMiner at " + ip);
                 } catch (Exception e) {
-                    logger.debug("Unable to open socket connection on " + ip);
+                    log.debug("Unable to open socket connection on " + ip);
                 }
             }
         }

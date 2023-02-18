@@ -4,11 +4,9 @@ import com.twoolab.app.miners.AntMiner;
 import com.twoolab.app.miners.AntMinerUtils;
 import com.twoolab.app.miners.MinerConnection;
 import com.twoolab.app.monitoring.MonitoringService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.startup.Tomcat;
-import org.apache.log4j.Logger;
-import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,10 +18,10 @@ import java.util.regex.Pattern;
  * @author yeesheng on 21/02/2018
  * @project antmonitorapp
  */
+@Slf4j
 public class Main
 {
     public static final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
-    private static final Logger logger = Logger.getLogger(Main.class);
     private static final String IPADDRESS_PATTERN =
             "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
             "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
@@ -35,15 +33,15 @@ public class Main
     public static final Optional<String> endIp = Optional.ofNullable(System.getenv("ENDIP"));
 
     public static void main( String[] args ) throws Exception {
-        logger.info("Start scanning Ant Miner host");
+        log.info("Start scanning Ant Miner host");
 
         String startRange = startIp.orElse("192.168.1.180");
         String endRange = endIp.orElse("192.168.1.200");
 
-        logger.info(String.format("Scanning range from %s to  %s", startRange, endRange));
+        log.info(String.format("Scanning range from %s to  %s", startRange, endRange));
 
         List<AntMiner> antminerHosts = MonitoringService.searchMiners(startRange, endRange);
-        logger.info("Total antminer: " + antminerHosts.size());
+        log.info("Total antminer: " + antminerHosts.size());
 
 //        MonitoringService.minerList.add(new AntMiner(new DummyConnection("10.10.11.1")));
 //        MonitoringService.minerList.add(new AntMiner(new DummyConnection("10.10.11.2")));
@@ -89,13 +87,13 @@ public class Main
             String ipPrefix = startIp.substring(0, startIp.lastIndexOf(".")+1);
             for (int i = 0; i <= count; i++) {
                 String ip = ipPrefix + (start + i);
-                logger.debug("Trying to open " + ip);
+                log.debug("Trying to open " + ip);
                 try {
                     AntMinerUtils.getDebugVersion(ip);
                     hostList.add(new AntMiner(new MinerConnection(ip)));
-                    logger.info("Found AntMiner at " + ip);
+                    log.info("Found AntMiner at " + ip);
                 } catch (Exception e) {
-                    logger.debug("Unable to open socket connection on " + ip);
+                    log.debug("Unable to open socket connection on " + ip);
                 }
             }
         }

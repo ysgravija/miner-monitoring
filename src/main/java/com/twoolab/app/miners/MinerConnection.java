@@ -1,14 +1,10 @@
 package com.twoolab.app.miners;
 
 import com.twoolab.app.Connection;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -18,7 +14,7 @@ import java.net.Socket;
  */
 public class MinerConnection implements Connection {
 
-    private static final Logger logger = Logger.getLogger(MinerConnection.class);
+    private static final Logger logger = LoggerFactory.getLogger(MinerConnection.class);
     private String host = null;
     private boolean debugMode = false;
 
